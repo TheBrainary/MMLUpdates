@@ -1,0 +1,6 @@
+[submodule "blockly"]
+	path = blockly
+	url = https://github.com/MIRO-Robot/blockly.git
+[submodule "ace-builds"]
+	path = ace-builds
+	url = https://github.com/MIRO-Robot/ace-builds.git

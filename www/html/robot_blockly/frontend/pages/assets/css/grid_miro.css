@@ -1,0 +1,133 @@
+header {
+  grid-area: header;
+  background-color: #2A2D2F;
+  padding: 20px;
+}
+
+logo-miro {
+  grid-area: logo-miro;
+  background-color: #2A2D2F;
+  padding: 4px;
+}
+
+logo-burger {
+  grid-area: logo-burger;
+  background-color: #2A2D2F;
+  padding: 4px;
+}
+
+logo-circle {
+  grid-area: logo-circle;
+  background-color: #2A2D2F;
+  padding: 4px;
+}
+
+logo-info {
+  grid-area: logo-info;
+  background-color: #2A2D2F;
+  padding: 4px;
+}
+
+article {
+  grid-area: content;
+  background-color: #3A3D40;
+  padding: 10px;
+  padding-right: 20px;
+}
+
+aside {
+  grid-area: blocks;
+  background-color: #3A3D40;
+  padding: 10px;
+}
+
+footer {
+  padding: 4px;
+  grid-area: footer;
+  background-color: #2A2D2F;
+}
+
+switch-blockly {
+  padding: 4px;
+  grid-area: switch-blockly;
+  background-color: #3A3D40;
+}
+
+switch-miro {
+  padding: 4px;
+  grid-area: switch-miro;
+  background-color: #3A3D40;
+}
+
+control-panel {
+  grid-area: control-panel;
+  background-color: #3A3D40;
+  padding: 10px;
+}
+
+.wrapper {
+  display: block;
+  width: 1000px
+  grid-gap: 0px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "header header header header"
+    "switch-blockly switch-blockly switch-miro switch-miro"
+    "blocks blocks blocks blocks"
+    "blocks blocks blocks blocks"
+    "blocks blocks control-panel control-panel"
+    "footer footer footer footer";
+}
+
+.header-wrapper {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 1fr 1fr 3fr 3fr;
+  grid-template-areas:
+    "logo-miro logo-circle logo-info logo-info"
+    "logo-burger logo-circle logo-info  logo-info";
+}
+
+.switch-wrapper {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "switch-blockly switch-miro"
+}
+/* @media (max-width: 800px) {
+  .wrapper {
+    grid-template-columns: 4fr;
+    grid-template-areas:
+      "header"
+      "content"
+      "control-panel"
+      "blocks"
+      "footer";
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #miro_view{
+    height: 400px;
+    width:400px%;
+  }
+} */
+
+@media screen {
+  #blocklyDiv{
+    height:700px;
+  }
+  #editor{
+    height:700px;
+  }
+}
+
+@media screen {
+  #blocklyDiv{
+    width:inherit;
+  }
+  #editor{
+    width:inherit;
+  }
+}

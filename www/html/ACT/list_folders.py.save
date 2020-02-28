@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+import os
+from os.path import join, getsize
+# initialise ROS node
+
+print os.walk("~/ACT")
+for root, dirs, files in os.walk('/home/miro/ACT/'):
+    print root, "consumes",
+from os.path import join, getsize    
+    if 'CVS' in dirs:
+        dirs.remove('CVS')  # don't visit CVS directories

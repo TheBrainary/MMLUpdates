@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+	<defs>
+		<image width="760" height="760" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAvgAAAL4AgMAAABzTGtwAAAAAXNSR0IB2cksfwAAAAlQTFRF////////AAAAjvTD7AAAAAN0Uk5T/wAARO7wMwAAAYNJREFUeJzt3UENwAAQw7CRHMmhHIh7RJVsBCFQ9XkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4e6fJL8kvyS/JL8kvyS/JL8kvyS+t53/T5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX5Jfkl+SX1vPrwfCN/JL8kvyS/JL8kvyS/JL8kvzSej4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABTqg98b+SX5Jfkl+SX5Jfkl+SX5Jfml9fxvmvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL8kvyS/JL80np+PRi+kV+SX5Jfkl+SX5Jfkl+SX5JfWs8HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg7AewLZgfuqW3dwAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Layer 2" href="#img1" x="20" y="20" />
+</svg>

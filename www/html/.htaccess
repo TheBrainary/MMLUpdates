@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} 10\.1\.1\.66 [NC]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /blog/$1 [L]

@@ -1,0 +1,221 @@
+    <!-- <category id="spider" name="Erle-Spider" colour="260">
+          <block type="spider_standup_down"></block>
+          <block type="spider_walk"></block>
+          <block type="spider_turn"></block>
+          <block type="spider_turn_degrees"></block>
+          <block type="spider_walk_meters"></block>
+    </category>
+    <category id="copter" name="Erle-Copter" colour="190">
+    </category>
+    <category id="hexacopter" name="Erle-HexaCopter" colour="90">
+    </category>
+    <category id="rover" name="Erle-Rover" colour="50">
+          <block type="rover_mode"></block>
+          <block type="rover_control"></block>
+    </category>
+    <category id="brain" name="Erle-Brain" colour="0">
+          <block type="turn_on_blue_led"></block>
+          <block type="turn_on_orange_led"></block>
+          <block type="get_laser"></block>
+          <block type="take_a_picture"></block>
+          <block type="calibrate_imu"></block>
+          <block type="camera_color_location"></block>
+          <block type="start_hokuyo_laser"></block>
+          <block type="start_sick_laser"></block>
+          <block type="start_slam"></block>
+          <block type="find_path"></block>
+    </category> -->
+
+
+    </xml>
+
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Code execution logic -->
+    <script src="./js/execution_logic.js"></script>
+
+<!-- ACE editor configuration -->
+<script type="text/javascript">
+  document.getElementById('editor').style.fontSize='16px';
+</script>
+
+<script>
+  var blocklyArea = document.getElementById('blocklyArea');
+  var blocklyDiv = document.getElementById('blocklyDiv');
+  var workspace = Blockly.inject(blocklyDiv,
+    {toolbox: document.getElementById('toolbox'),
+       scrollbars: true,
+       rtl: false,
+       zoom:
+           {enabled: true,
+            controls: true,
+            wheel: true,
+            maxScale: 4,
+            minScale: .25,
+            scaleSpeed: 1.1
+           },
+       grid:
+           {spacing: 25,
+            length: 3,
+            colour: '#ccc',
+            snap: false},
+       trashcan: true});
+
+  var onresize = function(e) {
+  // Compute the absolute coordinates and dimensions of blocklyArea.
+  var element = blocklyArea;
+  var x = 0;
+  var y = 0;
+  do {
+    x += element.offsetLeft;
+    y += element.offsetTop;
+    element = element.offsetParent;
+  } while (element);
+  // Position blocklyDiv over blocklyArea.
+  blocklyDiv.style.left = x + 'px';
+  blocklyDiv.style.top = y + 'px';
+  blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+  blocklyDiv.style.height = blocklyArea.offsetHeight  + 'px';
+  // blocklyDiv.style.height = blocklyArea.offsetHeight - 51 - 42 + 171 + 'px';
+  };
+  window.addEventListener('resize', onresize, false);
+  onresize();
+</script>
+
+<script>
+  function tojavascript(){
+      Blockly.JavaScript.addReservedWords('code');
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      try {
+        //eval(code);
+        alert(code);
+      } catch (e) {
+        alert(e);
+      }
+  };
+
+  function tophp(){
+      Blockly.JavaScript.addReservedWords('code');
+      var code = Blockly.PHP.workspaceToCode(workspace);
+      try {
+        //eval(code);
+        alert(code);
+      } catch (e) {
+        alert(e);
+      }
+  };
+
+  function topython(){
+      Blockly.Python.addReservedWords('code');
+      var code = Blockly.Python.workspaceToCode(workspace);
+      try {
+        //eval(code);
+        alert(code);
+      } catch (e) {
+        alert(e);
+      }
+  };
+
+  // hide blockly and show the code
+  function hide_blockly() {
+      document.getElementById("blocklyDiv").style.display = 'none';
+      document.getElementById("blocklyArea").style.display = 'none';
+      // onresize();
+      window.dispatchEvent(new Event('resize'));
+
+      // show the code
+      Blockly.Python.addReservedWords('code');
+      var code = Blockly.Python.workspaceToCode(workspace);
+      // // the old way of placing the code, this required a textarea
+      // document.getElementById("editor").innerHTML = code;
+
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/python");
+      editor.getSession().setUseWrapMode(true);
+      editor.setShowPrintMargin(false);
+      editor.setValue(code);
+  };
+
+  function show_blockly() {
+      document.getElementById("blocklyDiv").style.display = 'block';
+      document.getElementById("blocklyArea").style.display = 'block';
+      window.location.reload(true);
+      // alert("resizing");
+      // window.dispatchEvent(new Event('resize'));
+  };
+</script>
+
+<script type="text/javascript">
+
+  // restore at the beginning.
+  // This is launched after the page has finished loading
+  function restorelocal(){
+    var xml_text = localStorage.getItem("blocks_cache");
+    try {
+      var xml = Blockly.Xml.textToDom(xml_text);
+      Blockly.Xml.domToWorkspace(workspace, xml);
+
+      automate_localstorage();
+    }
+    catch(err) {
+        // alert(err);
+        console.log(err);
+        // console.log("This is generally because there's no tree information");
+        automate_localstorage();
+    }
+
+    //Read port from url
+    var this_port = location.href.split(":")[2].split("/")[0];
+    var port_diff = 1036 - parseInt(this_port);
+    var backend_port_int = 9000 + port_diff
+    var backend_port_str = backend_port_int.toString()
+
+    console.log(this_port)
+    console.log(port_diff)
+    console.log(backend_port_int)
+    console.log(backend_port_str)
+
+    // document.getElementById("log").innerHTML = l;
+    // document.getElementById("pass").innerHTML = p;
+
+    // Launch websockets
+    ExecutionLogicModule.launch_websockets(backend_port_str);
+
+    // Recursively store everything after x miliseconds
+    // automate_localstorage();
+  }
+
+  function automate_localstorage(){
+      localstorage();
+      setTimeout(automate_localstorage, 1000);
+  }
+
+  // Save stuff on local storage
+  function localstorage() {
+    var xml = Blockly.Xml.workspaceToDom(workspace);
+    var xml_text = Blockly.Xml.domToText(xml);
+    localStorage.setItem("blocks_cache", xml_text);
+    // console.log("Saved: "+xml_text);
+    // console.log("-------------");
+    var xml_text_stored = localStorage.getItem("blocks_cache");
+    // console.log("Rtved: "+xml_text_stored)
+    // alert("Saved: "+xml_text);
+  }
+
+</script>
+
+</body>
+
+</html>
